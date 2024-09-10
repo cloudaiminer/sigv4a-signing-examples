@@ -2,6 +2,10 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 mainClassName = 'com.sigv4aSigning.SigV4ASign'
+if (project.hasProperty('mainClass')) {
+    mainClassName = project.mainClass
+}
+
 version = '1.0'
 
 compileJava {
