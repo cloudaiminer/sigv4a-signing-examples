@@ -49,6 +49,9 @@ public class MyClass {
                 method,
                 uri
         );
+	// Add custom headers
+        headers.put("Custom-Header", List.of("CustomHeaderValue"));
+        headers.put("Another-Header", List.of("AnotherValue"));
         try {
             URL urlObj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
