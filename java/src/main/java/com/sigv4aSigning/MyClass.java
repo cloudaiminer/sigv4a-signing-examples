@@ -21,12 +21,19 @@ import java.util.Map;
 
 public class MyClass {
     public static void main(String[] args) {
-        SigV4Sign sigV4ASign = SigV4Sign.create(DefaultCredentialsProvider.create().resolveCredentials());
 
         String url = "https://hdx9uf10u5.execute-api.eu-west-2.amazonaws.com/prod/message";
-        URI uri = URI.create(url);
+        if (args.length != 1) {
+            System.out.println("No url arguments provided.");
+            return;
+        } else {
+           url = args[0];
+	}
+	SigV4Sign sigV4ASign = SigV4Sign.create(DefaultCredentialsProvider.create().resolveCredentials());
+
+	URI uri = URI.create(url);
         String serviceName = "execute-api";
-	Region region = Region.EU_WEST_2;
+	Region region = Region.AP_SOUTHEAST_1;
         //RegionScope globalRegion = RegionScope.create("eu-west-2");
         SdkHttpMethod method = SdkHttpMethod.GET;
 
